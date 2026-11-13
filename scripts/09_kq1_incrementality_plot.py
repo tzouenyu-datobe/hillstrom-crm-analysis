@@ -97,7 +97,7 @@ plt.tight_layout(rect=[0, 0.10, 1, 1])
 
 # Export before displaying
 fig.savefig(
-    "Figure_1_KQ1_Incrementality.png",
+    "output/Figure_1_KQ1_Incrementality.png",
     dpi=300,
     bbox_inches="tight"
 )

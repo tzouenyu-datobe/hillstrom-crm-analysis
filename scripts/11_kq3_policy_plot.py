@@ -124,7 +124,7 @@ fig.text(
 plt.tight_layout(rect=[0, 0.19, 1, 1])
 
 fig.savefig(
-    "Figure_3_KQ3_Policy_Profit.png",
+    "output/Figure_3_KQ3_Policy_Profit.png",
     dpi=300,
     bbox_inches="tight"
 )

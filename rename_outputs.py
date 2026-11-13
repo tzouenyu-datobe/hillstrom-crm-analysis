@@ -55,3 +55,26 @@ for file in sorted(output_dir.iterdir()):
 
     except (csv.Error, UnicodeError) as e:
         print(f"{file.name}: CHECK MANUALLY ({e})")
+
+
+print("\n--- Rename Files ---")
+
+for file in sorted(output_dir.iterdir()):
+    if not file.is_file() or file.suffix.lower() == ".png":
+        continue
+
+    new_name = normalize_filename(file.stem)
+    new_name = new_name.replace("upflift", "uplift")
+
+    target = file.with_name(f"{new_name}.csv")
+
+    if file == target:
+        print(f"SKIP: {file.name}")
+        continue
+
+    if target.exists():
+        print(f"CONFLICT: {target.name} already exists")
+        continue
+
+    file.rename(target)
+    print(f"RENAMED: {file.name} -> {target.name}")

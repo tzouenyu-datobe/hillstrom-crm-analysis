@@ -1,7 +1,7 @@
 
 import pandas as pd
 
-df = pd.read_csv("output/newbie_uplift_with_CI.csv")
+df = pd.read_csv("output/newbie_uplift_with_ci.csv")
 
 # Only compare email treatments against No E-Mail
 plot_data = df[df["comparator"] == "No E-Mail"].copy()
@@ -109,7 +109,7 @@ fig.text(
 plt.tight_layout(rect=[0, 0.12, 1, 1])
 
 fig.savefig(
-    "Figure_2_KQ2_Segment_Heterogeneity.png",
+    "output/Figure_2_KQ2_Segment_Heterogeneity.png",
     dpi=300,
     bbox_inches="tight"
 )
