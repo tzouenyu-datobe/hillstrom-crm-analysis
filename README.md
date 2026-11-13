@@ -20,6 +20,11 @@
 
 ## 2. Data Overview — What We Know and What We Assume
 
+**Data Source.** This project uses the *MineThatData E-Mail Analytics and Data Mining Challenge* dataset, originally published by Kevin Hillstrom on March 20, 2008. The dataset contains 64,000 customers randomly assigned to three email campaign groups, with outcomes tracked over two weeks.
+
+- **Original publication:** [Kevin Hillstrom — MineThatData E-Mail Analytics Challenge](https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html)
+- **Original CSV:** [Download the dataset](http://www.minethatdata.com/Kevin_Hillstrom_MineThatData_E-MailAnalytics_DataMiningChallenge_2008.03.20.csv)
+
 **Experimental design.** The **Hillstrom / MineThatData Email Marketing Dataset** contains **64,000 rows**, one per customer, randomly assigned to three groups. The **No E-Mail group** provides a baseline for estimating the *intention-to-treat (ITT)* effect of email assignment. The dataset does not confirm that every assigned customer actually received, opened, or read an email.
 
 | Experimental group | Customers | Role |
