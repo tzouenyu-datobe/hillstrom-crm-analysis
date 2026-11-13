@@ -1,0 +1,22 @@
+"history_segment","treatment","n_customers"
+"1) $0 - $100","Mens E-Mail",7724
+"1) $0 - $100","No E-Mail",7612
+"1) $0 - $100","Womens E-Mail",7634
+"2) $100 - $200","Mens E-Mail",4691
+"2) $100 - $200","No E-Mail",4836
+"2) $100 - $200","Womens E-Mail",4727
+"3) $200 - $350","Mens E-Mail",4090
+"3) $200 - $350","No E-Mail",4044
+"3) $200 - $350","Womens E-Mail",4155
+"4) $350 - $500","Mens E-Mail",2097
+"4) $350 - $500","No E-Mail",2124
+"4) $350 - $500","Womens E-Mail",2188
+"5) $500 - $750","Mens E-Mail",1597
+"5) $500 - $750","No E-Mail",1652
+"5) $500 - $750","Womens E-Mail",1662
+"6) $750 - $1,000","Mens E-Mail",644
+"6) $750 - $1,000","No E-Mail",622
+"6) $750 - $1,000","Womens E-Mail",593
+"7) $1,000 +","Mens E-Mail",464
+"7) $1,000 +","No E-Mail",416
+"7) $1,000 +","Womens E-Mail",428

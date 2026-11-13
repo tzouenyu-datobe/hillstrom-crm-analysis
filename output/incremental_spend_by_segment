@@ -1,0 +1,4 @@
+"treatment_group","comparison_group","treatment_n","comparison_n","treatment_avg_spend","comparison_avg_spend","spend_difference"
+"Mens E-Mail","No E-Mail",21307,21306,1.4226,0.6528,0.7698
+"Womens E-Mail","Mens E-Mail",21387,21307,1.0772,1.4226,-0.3454
+"Womens E-Mail","No E-Mail",21387,21306,1.0772,0.6528,0.4244

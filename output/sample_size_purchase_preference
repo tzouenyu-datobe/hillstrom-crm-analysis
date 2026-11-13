@@ -1,0 +1,10 @@
+"purchase_preference","treatment","n_customers"
+"Both","Mens E-Mail",2181
+"Both","No E-Mail",2149
+"Both","Womens E-Mail",2118
+"Mens Only","Mens E-Mail",9558
+"Mens Only","No E-Mail",9638
+"Mens Only","Womens E-Mail",9622
+"Womens Only","Mens E-Mail",9568
+"Womens Only","No E-Mail",9519
+"Womens Only","Womens E-Mail",9647

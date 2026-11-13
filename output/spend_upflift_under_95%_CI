@@ -1,0 +1,4 @@
+"treatment_group","comparison_group","spend_difference","standard_error","ci_lower","ci_upper"
+"Mens E-Mail","No E-Mail",0.7698,0.1452,0.4851,1.0545
+"Womens E-Mail","Mens E-Mail",-0.3454,0.1596,-0.6583,-0.0326
+"Womens E-Mail","No E-Mail",0.4244,0.1303,0.1690,0.6799

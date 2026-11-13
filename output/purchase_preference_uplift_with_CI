@@ -1,0 +1,10 @@
+"purchase_preference","treatment","comparator","uplift","se","ci_lower","ci_upper"
+"Both","Mens E-Mail","No E-Mail",1.8250,0.6810,0.4901,3.1598
+"Both","Womens E-Mail","Mens E-Mail",-1.6631,0.6792,-2.9943,-0.3319
+"Both","Womens E-Mail","No E-Mail",0.1619,0.4976,-0.8134,1.1371
+"Mens Only","Mens E-Mail","No E-Mail",0.6827,0.2222,0.2472,1.1183
+"Mens Only","Womens E-Mail","Mens E-Mail",-0.4044,0.2430,-0.8807,0.0719
+"Mens Only","Womens E-Mail","No E-Mail",0.2784,0.2051,-0.1236,0.6803
+"Womens Only","Mens E-Mail","No E-Mail",0.6157,0.1766,0.2697,0.9618
+"Womens Only","Womens E-Mail","Mens E-Mail",0.0159,0.2085,-0.3927,0.4245
+"Womens Only","Womens E-Mail","No E-Mail",0.6316,0.1717,0.2951,0.9682

@@ -1,0 +1,4 @@
+"treatment_group","comparison_group","visit_uplift_pp","se_pp","ci_lower_pp","ci_upper_pp"
+"Mens E-Mail","No E-Mail",7.6590,0.3386,6.9953,8.3226
+"Womens E-Mail","Mens E-Mail",-3.1356,0.3608,-3.8428,-2.4285
+"Womens E-Mail","No E-Mail",4.5233,0.3234,3.8894,5.1573
