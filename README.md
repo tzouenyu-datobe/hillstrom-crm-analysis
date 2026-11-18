@@ -6,9 +6,9 @@
 
 ## 1. Executive Summary — The Business Decision
 
-**Business problem.** A retail CRM team wants to know **whether to send marketing emails, which email version to use, and which customers to target to generate more profit**. Higher conversion or revenue after a campaign does not necessarily mean the campaign caused those purchases: some customers would have bought anyway. The analysis therefore starts with *incremental spending* and uses explicit business assumptions to assess potential *incremental profit*.
+**Business problem.** A retail CRM team needs to decide whether to send marketing emails, which version to use, and which customers to prioritize under a limited budget. Optimizing conversion rates alone can misallocate resources toward customers who would have purchased anyway. The key decision is therefore not simply who converts, but **which campaign and targeting policy can generate additional business value**.
 
-**Data and approach.** This case uses Hillstrom's **64,000-customer randomized retail email experiment** with a **two-week outcome window**. Three connected questions guide the analysis. **KQ1–KQ2 estimate effects from experimental outcomes; KQ3 simulates profit** using estimated effects and hypothetical campaign economics. The profit figures are **not observed business profits**.
+**Data and approach.** Using Hillstrom's randomized experiment of 64,000 customers, I evaluated three connected decisions: (1) whether email increases spending beyond the no-email baseline, (2) whether customer characteristics provide credible targeting opportunities, and (3) how candidate allocation policies compare under hypothetical campaign economics. **KQ1–KQ2 use experimental outcomes; KQ3 is a policy simulation, not an observed profit result.**
 
 | Key question | Main finding | Business decision |
 | --- | --- | --- |
@@ -16,7 +16,9 @@
 | **KQ2 · Is there a useful customer targeting opportunity?** | We compared **historical spending tiers, new/existing status, and past merchandise preferences**. New/existing status showed a relatively actionable exploratory pattern, but no reliable segment-effect difference was established after the specified statistical checks. | Carry one **testable targeting hypothesis** into the policy simulation, rather than treating the highest estimate as a proven winner. |
 | **KQ3 · Which allocation might generate more incremental profit?** | For a **hypothetical 64,000-customer audience**, assuming **40% contribution margin, 0.05 cost per email, a 1,600 budget cap, and 32,000 sends**, **Newbie-first Men's Email** produced **10,688 simulated incremental profit**, **29.49% above** random Men's Email allocation. | Compare four candidates—**No Email, Random Men's, Random Women's, and Newbie-first Men's**—using profit and budget checks; validate the promising policy in a future randomized test. |
 
-**Recommendation.** The randomized experiment found positive incremental spending for both email variants, with a larger effect for **Men's Email**. **Prioritize Men's Email for the next campaign evaluation**, subject to real costs and margins. The Newbie-first policy has the highest simulated profit, but its apparent advantage is not yet proven. **Next, verify actual campaign economics and run a prospective randomized policy comparison of Random Men's versus Newbie-first Men's**, with an appropriate no-email control or holdout to estimate incremental profit before scaling.
+**Recommendation.** Prioritize Men's Email for further campaign evaluation, as it demonstrated higher incremental spending than both No Email and Women's Email. However, the best targeting policy remains uncertain. Although Newbie-first Men's Email generated 29.49% higher simulated incremental profit than random Men's Email allocation, the subgroup evidence does not establish a reliable targeting advantage.
+
+**Next step:** Verify actual campaign economics and run a prospective randomized comparison of Random Men's and Newbie-first Men's allocation, with an appropriate no-email holdout, before making a broader rollout decision.
 
 ## 2. Data Overview — What We Know and What We Assume
 
@@ -101,7 +103,9 @@
 | Women's Email − No Email | **+0.4244** | [0.1690, 0.6799] |
 | Women's Email − Men's Email | **−0.3454** | [−0.6583, −0.0326] |
 
-**Finding.** Both email versions increased average spend versus No Email; Men's Email showed the larger estimate. The displayed intervals are **normal-approximation 95% CIs**, with the primary spend conclusions also supported by bootstrap and spend-only Holm checks. **This supports evaluating Men's Email first**, but does not identify which creative or product characteristics explain its performance.
+**Finding & Decision.** Both email variants generated positive incremental spending relative to No Email, with Men's Email showing the larger effect (+0.7698 per assigned customer). This supports prioritizing Men's Email for the next campaign evaluation rather than choosing based on observed conversion rates alone.
+
+However, incremental spending is not incremental profit. The final rollout decision still depends on actual margins and campaign costs. The dataset also cannot explain which creative or product characteristics drove the difference.
 
 ### KQ2 — Why New vs Existing Was Explored
 
@@ -112,13 +116,15 @@
 | New (`newbie=1`) | **+0.9600** | +0.7323 |
 | Existing (`newbie=0`) | +0.5780 | +0.1140 |
 
-**Finding.** New customers had higher point-estimated uplift for both versions. But for Men's Email, the **new-versus-existing effect difference** was **+0.3820** with a 95% CI of **[−0.1877, 0.9517]**, which includes zero. **The chart illustrates an opportunity worth testing, not evidence that Newbie-first allocation is already superior.**
+**Finding & Decision.** New customers showed higher estimated spending uplift under both email variants. For Men's Email, the estimated new-versus-existing difference was +0.3820, but its 95% CI [−0.1877, 0.9517] included zero.
+
+This creates a practical targeting hypothesis, not a validated targeting rule. I therefore selected new/existing status for economic scenario testing because it is operationally interpretable and available before campaign assignment, while retaining uncertainty about the true difference in treatment effects.
 
 ### KQ3 — Simulated Incremental Profit
 
 ![Figure 3: Policy profit comparison](output/Figure_3_KQ3_Policy_Profit.png)
 
-**Four policies under the baseline scenario in Section 1.** P1 and P2 allocate the 32,000 sends **proportionally to the assumed new/existing audience mix**; their “Random” labels describe the *candidate policy*, not an actual random draw in the simulation. P3 prioritizes new customers for Men's Email. Each customer receives at most one email. The assumed new/existing population split (32,144 / 31,856) still needs a raw-data cross-check.
+**Four policies under the baseline scenario in Section 1.** P1 and P2 allocate the 32,000 sends **proportionally to the assumed new/existing audience mix**; their “Random” labels describe the *candidate policy*, not an actual random draw in the simulation. P3 prioritizes new customers for Men's Email. Each customer receives at most one email. The new/existing customer distribution (32,144 / 31,856) was verified against the 64,000 records in `data/hillstrom.csv`. The same counts are used in the KQ3 policy simulation.
 
 | Policy | Emails sent | **Simulated** incremental profit |
 | --- | ---: | ---: |
@@ -127,15 +133,28 @@
 | P2 · Random Women's | 32,000 | 3,834.13 |
 | P3 · Newbie-first Men's | 32,000 | **10,688.00** |
 
-**Finding.** P3's simulated incremental profit exceeded P1's by **2,433.80 (+29.49%)**. Under the tested fixed allocations and contribution margins of **20–50%**, P3 retained the highest modeled estimate. But at a cost of **0.08 or 0.10 per email**, 32,000 sends would cost **2,560 or 3,200**, above the **1,600 budget**. The scenarios remain useful diagnostics, but those fixed-volume allocations are **not budget-feasible**.
+**Finding & Decision.** Under the assumed 40% contribution margin, 0.05 email cost, and 1,600 budget cap, Newbie-first Men's Email generated 10,688 in simulated incremental profit, 29.49% above Random Men's Email.
 
-## 5. Business Recommendations — What Should the CRM Team Do Next?
+This makes Newbie-first a candidate for further testing, not an established superior policy. Its advantage relies on uncertain subgroup estimates and in-sample policy selection. Moreover, fixed allocations exceeding the budget at higher email costs are infeasible, even when modeled profit remains positive. The next decision is whether the potential upside justifies a prospective policy experiment.
 
-**Act on the experimental evidence.** **Prioritize Men's Email as the next campaign candidate** because its incremental spending estimate exceeds No Email and the alternative email version. Confirm the real contribution margin and send cost before turning this into a profit-based rollout decision.
+## 5. Business Recommendations — From Evidence to Action
 
-**Test the targeting hypothesis before rollout.** The Newbie-first policy looked better in the simulation, while KQ2 did not establish a reliable Men's Email effect difference between new and existing customers. Run a **prospective randomized policy comparison between P1 and P3**, keeping audience eligibility, send volume, and budget comparable. Include a suitable **no-email control/holdout** and predefine **incremental profit** as the decision metric.
+**Priority 1 — Evaluate Men's Email as the campaign candidate.**
 
-**Keep the decision conditional.** Reassess feasibility if unit costs or audience composition change. The measured outcome covers **two weeks**, not long-term retention or customer lifetime value. Distinguish **experimentally estimated campaign effects**, **exploratory subgroup signals**, and **simulated policy profits** when communicating the recommendation.
+The randomized experiment provides evidence that Men's Email increases average spending relative to No Email and outperforms Women's Email on the measured outcome. Before rollout, the CRM team should verify actual contribution margins, sending costs, and operational constraints to determine whether the spending uplift translates into incremental profit.
+
+**Priority 2 — Validate Newbie-first targeting before adoption.**
+
+Newbie-first Men's Email achieved the highest simulated profit, but the subgroup analysis did not establish a statistically reliable targeting advantage. I recommend a prospective randomized comparison of Random Men's and Newbie-first Men's allocation, with comparable eligible audiences, send volumes, and budgets. An appropriate no-email holdout should support incremental profit estimation.
+
+**Decision criteria and trade-offs.**
+
+- **Primary KPI:** Incremental profit per eligible customer, accounting for contribution margin and campaign costs.
+- **Secondary metrics:** Incremental spending and conversion, to explain the profit outcome.
+- **Constraints:** Campaign budget, audience eligibility, and send volume.
+- **Decision rule:** Adopt Newbie-first targeting only if prospective evidence supports a meaningful economic advantage over random allocation.
+
+**Limitations.** The experiment measures two-week outcomes, not long-term retention or customer lifetime value. Policy simulation results depend on assumed economics and estimated subgroup effects. No targeting policy has been prospectively validated in this case study.
 
 ## 6. Repository & Reproducibility
 
