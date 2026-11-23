@@ -8,13 +8,17 @@
 
 **Business problem.** A retail CRM team needs to decide whether to send marketing emails, which version to use, and which customers to prioritize under a limited budget. Optimizing conversion rates alone can misallocate resources toward customers who would have purchased anyway. The key decision is therefore not simply who converts, but **which campaign and targeting policy can generate additional business value**.
 
+**Experiment at a glance.** A retailer randomly assigned 64,000 customers to three groups: **Men's Email** (promoting men's merchandise), **Women's Email** (promoting women's merchandise), or **No Email** (control group). These labels describe the products featured in the emails, **not the customers' genders**. Customer purchases and spending were then tracked over two weeks.
+
+This randomized setup allows us to estimate how much additional spending each email campaign generated compared with sending no email.
+
 **Data and approach.** Using Hillstrom's randomized experiment of 64,000 customers, I evaluated three connected decisions: (1) whether email increases spending beyond the no-email baseline, (2) whether customer characteristics provide credible targeting opportunities, and (3) how candidate allocation policies compare under hypothetical campaign economics. **KQ1–KQ2 use experimental outcomes; KQ3 is a policy simulation, not an observed profit result.**
 
-| Key question | Main finding | Business decision |
-| --- | --- | --- |
-| **KQ1 · Does email generate additional spending?** | Relative to No Email, **Men's Email added an estimated 0.770 spend units per assigned customer** over two weeks. | Establish whether sending email creates value beyond purchases that would happen anyway. |
-| **KQ2 · Is there a useful customer targeting opportunity?** | We compared **historical spending tiers, new/existing status, and past merchandise preferences**. New/existing status showed a relatively actionable exploratory pattern, but no reliable segment-effect difference was established after the specified statistical checks. | Carry one **testable targeting hypothesis** into the policy simulation, rather than treating the highest estimate as a proven winner. |
-| **KQ3 · Which allocation might generate more incremental profit?** | For a **hypothetical 64,000-customer audience**, assuming **40% contribution margin, 0.05 cost per email, a 1,600 budget cap, and 32,000 sends**, **Newbie-first Men's Email** produced **10,688 simulated incremental profit**, **29.49% above** random Men's Email allocation. | Compare four candidates—**No Email, Random Men's, Random Women's, and Newbie-first Men's**—using profit and budget checks; validate the promising policy in a future randomized test. |
+| Key question | Main finding | Business decision & trade-off |
+|---|---|---|
+| **KQ1 · Does email generate additional spending?** | Relative to No Email, **Men's Email added an estimated 0.770 spend units per assigned customer** over two weeks. | **Prioritize Men's Email for further evaluation**, because it generated greater incremental spending than both No Email and Women's Email. However, actual profitability depends on campaign costs and margins. |
+| **KQ2 · Is there a useful customer targeting opportunity?** | We compared **historical spending tiers, new/existing status, and past merchandise preferences**. New customers showed higher estimated uplift, but reliable differences in segment effects were not established. | **Explore New-customer-first targeting** because new customers showed consistently higher estimated uplift across both email variants, and lifecycle status is easy to identify and operationalize. However, the estimated advantage remains uncertain, so it is a testable hypothesis rather than a validated targeting rule. |
+| **KQ3 · Which allocation might generate more incremental profit?** | Under the assumed campaign economics, **Newbie(New Customer)-first Men's Email generated 10,688 simulated incremental profit**, **29.49% above** Random Men's Email. | **Test Newbie-first against random allocation before rollout.** Although it showed higher simulated profit, adopting it directly risks overestimating the benefit due to uncertain subgroup effects and in-sample policy selection. A prospective experiment is needed to determine whether the targeting advantage holds in practice. |
 
 **Recommendation.** Prioritize Men's Email for further campaign evaluation, as it demonstrated higher incremental spending than both No Email and Women's Email. However, the best targeting policy remains uncertain. Although Newbie-first Men's Email generated 29.49% higher simulated incremental profit than random Men's Email allocation, the subgroup evidence does not establish a reliable targeting advantage.
 
@@ -124,7 +128,7 @@ This creates a practical targeting hypothesis, not a validated targeting rule. I
 
 ![Figure 3: Policy profit comparison](output/Figure_3_KQ3_Policy_Profit.png)
 
-**Four policies under the baseline scenario in Section 1.** P1 and P2 allocate the 32,000 sends **proportionally to the assumed new/existing audience mix**; their “Random” labels describe the *candidate policy*, not an actual random draw in the simulation. P3 prioritizes new customers for Men's Email. Each customer receives at most one email. The new/existing customer distribution (32,144 / 31,856) was verified against the 64,000 records in `data/hillstrom.csv`. The same counts are used in the KQ3 policy simulation.
+**Four policies under the baseline scenario:** 40% contribution margin, 0.05 cost per email, 1,600 budget cap, and 32,000 sends.P1 and P2 allocate the 32,000 sends **proportionally to the assumed new/existing audience mix**; their “Random” labels describe the *candidate policy*, not an actual random draw in the simulation. P3 prioritizes new customers for Men's Email. Each customer receives at most one email. The new/existing customer distribution (32,144 / 31,856) was verified against the 64,000 records in `data/hillstrom.csv`. The same counts are used in the KQ3 policy simulation.
 
 | Policy | Emails sent | **Simulated** incremental profit |
 | --- | ---: | ---: |
